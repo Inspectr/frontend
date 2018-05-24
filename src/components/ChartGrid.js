@@ -26,34 +26,32 @@ const styles = theme => ({
   },
 });
 
-const ChartGrid = (props) => {
-  const { classes } = props;
-
+const ChartGrid = ({ data, classes}) => {
   return (
     <div>
       <Grid container spacing={24}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Event count</Typography>
-            <BarChart height={200} />
+            <BarChart height={200} data={data}/>
           </Paper>
         </Grid>
         <Grid item xs={4}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={100} />
+            <BarChart height={100} data={data}/>
           </Paper>
         </Grid>
         <Grid item xs={4}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={100} />
+            <BarChart height={100} data={data}/>
           </Paper>
         </Grid>
         <Grid item xs={4}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={100} />
+            <BarChart height={100} data={data}/>
           </Paper>
         </Grid>
       </Grid>
