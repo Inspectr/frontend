@@ -1,14 +1,22 @@
 module.exports = {
-    posts: [
-        { id: 1, title: "Lorem Ipsum", views: 254, user_id: 123 },
-        { id: 2, title: "Sic Dolor amet", views: 65, user_id: 456 },
+    trails: [
+      {
+        id: 12345,
+        event: 'delete',
+        event_metadata: {},
+        created_at: new Date('2017-07-04'),
+        timestamp: new Date('2017-07-03'),
+        actor: '23094985xzldkwe039',
+        actor_metadata: {},
+        target: '1823ksd039ps332s',
+        target_metadata: {},
+        origin: 'checkr',
+        origin_metadata: {}
+      }
     ],
-    users: [
-        { id: 123, name: "John Doe" },
-        { id: 456, name: "Jane Doe" }
-    ],
-    comments: [
-        { id: 987, post_id: 1, body: "Consectetur adipiscing elit", date: new Date('2017-07-03') },
-        { id: 995, post_id: 1, body: "Nam molestie pellentesque dui", date: new Date('2017-08-17') }
+    // interval=3600 (1hr)
+    metrics: [
+        { starts_at: new Date('2017-07-03T03:00:00'), interval: 3600, size: 200 },
+        { starts_at: new Date('2017-07-03T04:00:00'), interval: 3600, size: 100 }
     ]
 }
