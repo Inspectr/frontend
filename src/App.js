@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.css'
 
-import AppBar from './components/AppBar'
-import ChartGrid from './components/ChartGrid'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+//mobx
+import {Provider} from 'mobx-react';
+import Store from './stores/store';
+
+import { ApolloProvider } from 'react-apollo';
+import makeClient from './lib/apollo';
+
+import Dashboard from './pages/Dashboard'
+
+const client = makeClient(process.env.REACT_APP_CIRCUIT_URI + '/query');
+const store = new Store()
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <AppBar />
-        <ChartGrid />
-      </div>
+      <ApolloProvider client={client}>
+        <Router>
+          <Provider store={store}>
+              <Switch>
+                <Route path='/' component={Dashboard} />
+              </Switch>
+          </Provider>
+        </Router>
+      </ApolloProvider>
     );
   }
 }
 
 export default App;
+
+// <Route path='/login' component={Login} />
