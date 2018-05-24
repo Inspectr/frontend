@@ -3,15 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 import AppBar from './components/AppBar'
+import ChartGrid from './components/ChartGrid'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <AppBar />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <ChartGrid />
       </div>
     );
   }
