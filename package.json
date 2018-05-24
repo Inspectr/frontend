@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.0.0",
+    "@material-ui/icons": "^1.0.0",
     "mobx": "^4.3.0",
     "mobx-react": "^5.1.2",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "recharts": "^1.0.0-beta.10"
   },
   "devDependencies": {
     "react-scripts": "1.1.4"
