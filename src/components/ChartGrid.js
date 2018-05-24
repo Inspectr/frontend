@@ -35,20 +35,26 @@ const ChartGrid = (props) => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Event count</Typography>
-            <BarChart height={400} />
+            <BarChart height={200} />
           </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>
+            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
+            <BarChart height={100} />
+          </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>
+            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
+            <BarChart height={100} />
+          </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>
+            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
+            <BarChart height={100} />
+          </Paper>
         </Grid>
       </Grid>
       <Divider className={classes.divider} />

@@ -19,6 +19,10 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  header: {
+    flex: 1,
+    textAlign: 'left'
+  }
 };
 
 const MainAppBar = (props) => {
@@ -30,7 +34,7 @@ const MainAppBar = (props) => {
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
+          <Typography variant="title" color="inherit" className={classes.header}>
             Inspectr
           </Typography>
           <Button color="inherit">Login</Button>
