@@ -13,7 +13,7 @@ import makeClient from './lib/apollo';
 
 import Dashboard from './pages/Dashboard'
 
-const client = makeClient(process.env.REACT_APP_INSPECTR_URI + '/query');
+const client = makeClient(process.env.REACT_APP_BACKEND_URI + '/query');
 const store = new Store()
 
 class App extends Component {
