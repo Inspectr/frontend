@@ -5,41 +5,41 @@ import gql from 'graphql-tag';
 
 import { inject, observer } from "mobx-react"
 
-import AppBar from '../components/AppBar'
+import AppBar    from '../components/AppBar'
 import ChartGrid from '../components/ChartGrid'
-import Trails from '../components/Trails'
+import Trails    from '../components/Trails'
+import Search    from '../components/Search'
+
+import { trailFields } from '../constants'
+
+const dashStyle = {
+  padding: '10px'
+}
 
 const query = gql`
 {
-  allTrails {
-    id
-    created
-    event
-    eventMetadata
-    actor
-    actorMetadata
-    target
-    targetMetadata
-    origin
-    originMetadata
+  trails {
+    ${trailFields.join("\n")}
   }
-  allMetrics {
-    starts_at
+  metrics {
+    startsAt
     interval
     size
   }
 }
 `
-// @graphql(query)
 
 const Dashboard = graphql(query)(inject("store")(observer((
-  { data, data: { loading, allTrails, allMetrics }, store: { query: { metrics }}}
+  { data, data: { loading, trails, metrics }, store: { query: { metrics: storeMetrics }}}
 ) => {
   return (
   <div className="App">
     <AppBar />
-    <ChartGrid data={metrics} />
-    <Trails data={allTrails} />
+    <div style={dashStyle}>
+      <Search handleChange={(chips) => console.log(chips)}/>
+      <ChartGrid data={storeMetrics} />
+      <Trails data={trails} />
+    </div>
   </div>
   )
 })))

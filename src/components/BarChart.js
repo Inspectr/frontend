@@ -6,6 +6,7 @@ const GridBarChart = ({ height, data }) => (
   <ResponsiveContainer width='100%' height={height}>
     <BarChart data={data}>
        <Bar dataKey='uv' fill='#8884d8'/>
+       <Tooltip />
      </BarChart>
   </ResponsiveContainer>
 )
