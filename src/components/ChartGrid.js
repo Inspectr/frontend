@@ -28,9 +28,11 @@ const queryOptions = {
     console.log(JSON.stringify(store.query.startsAt, null, 2))
     return ({
       variables: {
-        startsAt: store.query.startsAt.toISOString(),
+        // startsAt: store.query.startsAt.toISOString(),
         interval: 3600,
-        endsAt: new Date().toISOString()
+        // endsAt: new Date().toISOString()
+        startsAt: '2018-05-25T00:00:00-00:00',
+        endsAt: '2018-05-26T00:00:00-00:00'
       }
     })
   }
