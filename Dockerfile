@@ -31,7 +31,7 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 # install and cache app dependencies
 ADD package.json /usr/src/app/package.json
 ADD yarn.lock /usr/src/app/yarn.lock
-RUN yarn
+RUN npm install
 RUN npm install -g serve
 
 ADD . /usr/src/app/
