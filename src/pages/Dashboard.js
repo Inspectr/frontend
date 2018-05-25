@@ -16,18 +16,27 @@ const dashStyle = {
   padding: '10px'
 }
 
+// metrics {
+//   startsAt
+//   interval
+//   size
+// }
+
 const query = gql`
-{
-  trails {
+query Trail($event: String){
+  trails(event: $event) {
     ${trailFields.join("\n")}
-  }
-  metrics {
-    startsAt
-    interval
-    size
   }
 }
 `
+
+const queryOptions = {
+  options: ({ store: query}) => ({
+    variables: {
+      event: query['event'] || ''
+    }
+  })
+}
 
 const metricsData = [
       {name: 'Page A', uv: 4000},
@@ -46,7 +55,7 @@ const metricsData = [
       {name: 'Page G', uv: 3490},
 ];
 
-const Dashboard = graphql(query)(inject("store")(observer((
+const Dashboard = inject("store")(graphql(query, queryOptions)(observer((
   { data, data: { loading, trails, metrics }, store, store: { query }}
 ) => {
   console.log(JSON.stringify(trails, null, 2))
