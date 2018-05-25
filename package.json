@@ -12,6 +12,7 @@
     "apollo-link-error": "^1.0.9",
     "apollo-link-http": "^1.5.4",
     "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
     "mobx": "^4.3.0",
     "mobx-react": "^5.1.2",
     "react": "^16.4.0",
