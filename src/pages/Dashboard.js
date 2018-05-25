@@ -49,7 +49,7 @@ const metricsData = [
 const Dashboard = graphql(query)(inject("store")(observer((
   { data, data: { loading, trails, metrics }, store, store: { query }}
 ) => {
-  console.log(JSON.stringify(query, null, 2))
+  console.log(JSON.stringify(trails, null, 2))
   return (
   <div className="App">
     <AppBar>

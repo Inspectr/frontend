@@ -16,11 +16,11 @@ class AppStore {
       if (value) {
         query[column] = (query[column] || []).concat([value])
       } else {
-        query['q'] = (query['q'] || '') + column
+        query['q'] = (query['query'] || '') + column
       }
     })
 
-    without(Object.keys(query), 'q').forEach(key => {
+    without(Object.keys(query), 'query').forEach(key => {
       query[key] = query[key].join(',')
     })
 

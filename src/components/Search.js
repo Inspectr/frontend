@@ -73,7 +73,7 @@ const endsWithColon = new RegExp(':$')
 const filterVocabulary = {
   // TODO extract graphql call
   origin: ['checkr', 'tickets', 'optix', 'operator', 'providers'],
-  event: ['user.created', 'screening.updated']
+  event: ['upgrade_report', 'create_report', 'create_user']
 }
 
 const getSuggestions = (currTextValue) => {
@@ -165,10 +165,7 @@ const Search = ({classes, handleChange}) => (
           />
         </Grid>
         <Grid item xs={4} md={4} className={classes.timeSelection}>
-          <Button variant="outlined" className={classes.button}>
-            <TimeIcon /> Selected Range
-            <TimePicker />
-          </Button>
+          <TimePicker />
         </Grid>
       </Grid>
     </Paper>
