@@ -46,7 +46,7 @@ const MainAppBar = (props) => {
           <Grid item xs={9}>
             <div classes={classes.children}>{ children }</div>
           </Grid>
-          <Grid item xs={2} style={{textAlign: 'right' }}>
+          <Grid item xs={2} style={{textAlign: 'right'}}>
             <Button color="inherit">Logout</Button>
           </Grid>
         </Grid>

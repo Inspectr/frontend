@@ -114,6 +114,8 @@ class ControlledChipInput extends React.Component {
   handleDelete (deletedChip) {
     this.setState({
       chips: this.state.chips.filter((c) => c !== deletedChip)
+    }, () => {
+      this.props.handleChange(this.state.chips)
     })
   }
 
