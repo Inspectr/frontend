@@ -47,7 +47,7 @@ const styles = theme => ({
 const endsWithColon = new RegExp(':$')
 
 const filterVocabulary = {
-  // TODO extract to
+  // TODO extract graphql call
   origin: ['checkr', 'tickets', 'optix', 'operator', 'providers'],
   event: ['user.created', 'screening.updated']
 }
@@ -109,6 +109,7 @@ class ControlledChipInput extends React.Component {
             if (this.props.addOnBlur && event.target.value) {
               this.handleAdd(event.target.value)
             }
+            this.setState({suggestionsActive: false})
           }}
           onUpdateInput={value => { this.setState({suggestionsActive: true, currTextValue: value})}}
         />
