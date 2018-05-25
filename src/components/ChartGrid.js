@@ -6,7 +6,21 @@ import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { inject, observer } from "mobx-react"
+
 import BarChart from './BarChart';
+
+// const query = gql`
+// query Metric{
+//   metrics {
+
+//   }
+// }
+// `
+
+
 
 const styles = theme => ({
   container: {

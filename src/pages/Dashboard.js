@@ -31,41 +31,32 @@ query Trail($event: String){
 `
 
 const queryOptions = {
-  options: ({ store: query}) => ({
-    variables: {
-      event: query['event'] || ''
-    }
-  })
+  options: ({ store}) => {
+    // debugger
+    console.log(JSON.stringify(store.query, null, 2))
+    return ({
+      variables: {
+        event: store.query.event || ''
+      }
+    })
+  }
 }
 
-const metricsData = [
-      {name: 'Page A', uv: 4000},
-      {name: 'Page B', uv: 3000},
-      {name: 'Page C', uv: 2000},
-      {name: 'Page D', uv: 2780},
-      {name: 'Page E', uv: 1890},
-      {name: 'Page F', uv: 2390},
-      {name: 'Page G', uv: 3490},
-      {name: 'Page D', uv: 2780},
-      {name: 'Page E', uv: 1890},
-      {name: 'Page F', uv: 2390},
-      {name: 'Page G', uv: 3490},
-      {name: 'Page E', uv: 1890},
-      {name: 'Page F', uv: 2390},
-      {name: 'Page G', uv: 3490},
-];
+const handleSearchChange = (props, args) => {
+  props.store.setQuery(args)
+  props.data.refetch()
+}
 
-const Dashboard = inject("store")(graphql(query, queryOptions)(observer((
+const Dashboard = inject("store")(observer(graphql(query, queryOptions)((
   { data, data: { loading, trails, metrics }, store, store: { query }}
 ) => {
-  console.log(JSON.stringify(trails, null, 2))
   return (
   <div className="App">
     <AppBar>
-      <Search handleChange={(args) => store.setQuery(args)}/>
+      <Search handleChange={(args) => { handleSearchChange({store, data}, args) }}/>
     </AppBar>
     <div style={dashStyle}>
-      <ChartGrid data={metricsData} />
+      <ChartGrid />
       <Trails data={trails} />
     </div>
   </div>

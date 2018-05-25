@@ -1,11 +1,14 @@
 import {extendObservable, action} from 'mobx';
+import dayjs from 'dayjs';
 
 import without from 'lodash/without'
 
 class AppStore {
   constructor() {
     extendObservable(this, {
-      query: {}
+      query: {
+        startsAt: dayjs().subtract(1, 'day')
+      }
     })
   }
 
@@ -24,7 +27,7 @@ class AppStore {
       query[key] = query[key].join(',')
     })
 
-    this.query = query
+    this.query = { ...query, startsAt: this.query.startsAt }
   })
 }
 
