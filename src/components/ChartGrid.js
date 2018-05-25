@@ -33,25 +33,25 @@ const ChartGrid = ({ data, classes}) => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Event count</Typography>
-            <BarChart height={200} data={data}/>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Paper className={classes.paper}>
-            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
             <BarChart height={100} data={data}/>
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={100} data={data}/>
+            <BarChart height={60} data={data}/>
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={100} data={data}/>
+            <BarChart height={60} data={data}/>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Paper className={classes.paper}>
+            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
+            <BarChart height={60} data={data}/>
           </Paper>
         </Grid>
       </Grid>

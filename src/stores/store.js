@@ -1,31 +1,31 @@
 import {extendObservable, action} from 'mobx';
 
-const metricsData = [
-      {name: 'Page A', uv: 4000},
-      {name: 'Page B', uv: 3000},
-      {name: 'Page C', uv: 2000},
-      {name: 'Page D', uv: 2780},
-      {name: 'Page E', uv: 1890},
-      {name: 'Page F', uv: 2390},
-      {name: 'Page G', uv: 3490},
-      {name: 'Page D', uv: 2780},
-      {name: 'Page E', uv: 1890},
-      {name: 'Page F', uv: 2390},
-      {name: 'Page G', uv: 3490},
-      {name: 'Page E', uv: 1890},
-      {name: 'Page F', uv: 2390},
-      {name: 'Page G', uv: 3490},
-];
+import without from 'lodash/without'
 
 class AppStore {
   constructor() {
     extendObservable(this, {
-      query: {
-        data: [],
-        metrics: metricsData
-      }
+      query: {}
     })
   }
+
+  setQuery = action(filters => {
+    const query = {}
+    filters.forEach(f => {
+      const [column, value] = f.split(':')
+      if (value) {
+        query[column] = (query[column] || []).concat([value])
+      } else {
+        query['q'] = (query['q'] || '') + column
+      }
+    })
+
+    without(Object.keys(query), 'q').forEach(key => {
+      query[key] = query[key].join(',')
+    })
+
+    this.query = query
+  })
 }
 
 export default AppStore;

@@ -29,15 +29,33 @@ const query = gql`
 }
 `
 
+const metricsData = [
+      {name: 'Page A', uv: 4000},
+      {name: 'Page B', uv: 3000},
+      {name: 'Page C', uv: 2000},
+      {name: 'Page D', uv: 2780},
+      {name: 'Page E', uv: 1890},
+      {name: 'Page F', uv: 2390},
+      {name: 'Page G', uv: 3490},
+      {name: 'Page D', uv: 2780},
+      {name: 'Page E', uv: 1890},
+      {name: 'Page F', uv: 2390},
+      {name: 'Page G', uv: 3490},
+      {name: 'Page E', uv: 1890},
+      {name: 'Page F', uv: 2390},
+      {name: 'Page G', uv: 3490},
+];
+
 const Dashboard = graphql(query)(inject("store")(observer((
-  { data, data: { loading, trails, metrics }, store: { query: { metrics: storeMetrics }}}
+  { data, data: { loading, trails, metrics }, store, store: { query }}
 ) => {
+  console.log(JSON.stringify(query, null, 2))
   return (
   <div className="App">
     <AppBar />
     <div style={dashStyle}>
-      <Search handleChange={(chips) => console.log(chips)}/>
-      <ChartGrid data={storeMetrics} />
+      <Search handleChange={(args) => store.setQuery(args)}/>
+      <ChartGrid data={metricsData} />
       <Trails data={trails} />
     </div>
   </div>
