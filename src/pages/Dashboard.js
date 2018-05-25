@@ -7,6 +7,7 @@ import { inject, observer } from "mobx-react"
 
 import AppBar from '../components/AppBar'
 import ChartGrid from '../components/ChartGrid'
+import Trails from '../components/Trails'
 
 const query = gql`
 {
@@ -15,9 +16,9 @@ const query = gql`
     created_at
     timestamp
     event
+    event_metadata
     actor
     actor_metadata
-    target
     target
     target_metadata
     origin
@@ -37,9 +38,9 @@ const Dashboard = graphql(query)(inject("store")(observer((
 ) => {
   return (
   <div className="App">
-    <div>{JSON.stringify(allTrails,null, 2) }</div>
     <AppBar />
     <ChartGrid data={metrics} />
+    <Trails data={allTrails} />
   </div>
   )
 })))
