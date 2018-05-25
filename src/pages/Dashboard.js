@@ -16,12 +16,6 @@ const dashStyle = {
   padding: '10px'
 }
 
-// metrics {
-//   startsAt
-//   interval
-//   size
-// }
-
 const query = gql`
 query Trail($event: String){
   trails(event: $event) {
