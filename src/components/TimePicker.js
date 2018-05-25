@@ -28,12 +28,12 @@ const options = [
   // 'Hide all notification content',
 
   {
-    label: 'Last hour',
-    filter: dayjs().subtract(1, 'hour')
-  },
-  {
     label: 'Last day',
     filter: dayjs().subtract(1, 'day')
+  },
+  {
+    label: 'Last hour',
+    filter: dayjs().subtract(1, 'hour')
   },
   {
     label: 'Last week',

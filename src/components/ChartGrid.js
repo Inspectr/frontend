@@ -12,15 +12,29 @@ import { inject, observer } from "mobx-react"
 
 import BarChart from './BarChart';
 
-// const query = gql`
-// query Metric{
-//   metrics {
+const query = gql`
+query Metric($startsAt: Time, $interval: Int, $endsAt: Time){
+  metrics(startsAt: $startsAt, interval: $interval, endsAt: $endsAt) {
+    startsAt
+    interval
+    size
+  }
+}
+`
 
-//   }
-// }
-// `
-
-
+const queryOptions = {
+  options: ({ store}) => {
+    // debugger
+    console.log(JSON.stringify(store.query.startsAt, null, 2))
+    return ({
+      variables: {
+        startsAt: store.query.startsAt.toISOString(),
+        interval: 3600,
+        endsAt: new Date().toISOString()
+      }
+    })
+  }
+}
 
 const styles = theme => ({
   container: {
@@ -40,32 +54,14 @@ const styles = theme => ({
   },
 });
 
-const ChartGrid = ({ data, classes}) => {
+const ChartGrid = ({ data: { metrics }, classes}) => {
   return (
     <div>
       <Grid container spacing={24}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography variant="subheading" gutterBottom>Event count</Typography>
-            <BarChart height={100} data={data}/>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Paper className={classes.paper}>
-            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={60} data={data}/>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Paper className={classes.paper}>
-            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={60} data={data}/>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Paper className={classes.paper}>
-            <Typography variant="subheading" gutterBottom>Chart 2</Typography>
-            <BarChart height={60} data={data}/>
+            <BarChart height={100} data={metrics}/>
           </Paper>
         </Grid>
       </Grid>
@@ -78,4 +74,4 @@ ChartGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ChartGrid);
+export default inject("store")(observer(graphql(query, queryOptions)(withStyles(styles)(ChartGrid))));
