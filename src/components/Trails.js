@@ -61,8 +61,8 @@ class Trails extends React.Component {
           <TableBody>
             {data.map(trail => {
               return (
-                <React.Fragment>
-                  <TableRow key={trail.id} className={classes.summaryRow} onClick={this.onToggleDetails(trail.id)}>
+                <React.Fragment key={trail.id}>
+                  <TableRow className={classes.summaryRow} onClick={this.onToggleDetails(trail.id)}>
                     <TableCell>
                       <Icon className={classes.icon}>{this.state.showDetails[trail.id] ? 'remove_circle' : 'add_circle' }</Icon>
                     </TableCell>  
