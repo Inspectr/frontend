@@ -18,6 +18,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 
 const styles = theme => ({
+  chip: {
+    fontSize: '16px !important'
+  },
   root: {
     position: 'relative'
   },
@@ -28,6 +31,7 @@ const styles = theme => ({
   },
   paper: {
     padding: theme.spacing.unit,
+    paddingBottom: 0,
     textAlign: 'left',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
@@ -47,7 +51,7 @@ const styles = theme => ({
 const endsWithColon = new RegExp(':$')
 
 const filterVocabulary = {
-  // TODO extract to
+  // TODO extract graphql call
   origin: ['checkr', 'tickets', 'optix', 'operator', 'providers'],
   event: ['user.created', 'screening.updated']
 }
@@ -82,6 +86,8 @@ class ControlledChipInput extends React.Component {
     this.setState({
       currTextValue: '',
       chips: uniq([...this.state.chips, chip])
+    }, () => {
+      this.props.handleChange(this.state.chips)
     })
   }
 
@@ -100,7 +106,9 @@ class ControlledChipInput extends React.Component {
     return (
       <div className={classes.root}>
         <ChipInput
-          {...this.props}
+          label='Search'
+          fullWidth
+          disableUnderline
           value={this.state.chips}
           onBeforeAdd={(chip) => this.onBeforeAdd(chip)}
           onAdd={(chip) => this.handleAdd(chip)}
@@ -109,6 +117,9 @@ class ControlledChipInput extends React.Component {
             if (this.props.addOnBlur && event.target.value) {
               this.handleAdd(event.target.value)
             }
+            setTimeout(() => {
+              this.setState({suggestionsActive: false})
+            },100)
           }}
           onUpdateInput={value => { this.setState({suggestionsActive: true, currTextValue: value})}}
         />
@@ -120,24 +131,22 @@ class ControlledChipInput extends React.Component {
   }
 }
 
-const Search = ({classes}) => (
+const Search = ({classes, handleChange}) => (
   <div>
     <Paper className={classes.paper}>
       <Grid container spacing={24}>
         <Grid item xs={12} md={12}>
           <ControlledChipInput
+            handleChange={handleChange}
             classes={classes}
-            label='Search'
-            fullWidth
-            disableUnderline
           />
-          <Typography variant="caption">
-            <InfoIcon />
-            Search all fields using strings like '1234' or column values like 'origin:monolith'
-          </Typography>
         </Grid>
       </Grid>
     </Paper>
+    <Typography variant="caption">
+      <InfoIcon />
+      Search all fields using strings like '1234' or column values like 'origin:monolith'
+    </Typography>
   </div>
 )
 
