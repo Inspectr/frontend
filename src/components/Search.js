@@ -3,11 +3,15 @@ import ChipInput from 'material-ui-chip-input'
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import InfoIcon from '@material-ui/icons/Info';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+import InfoIcon from '@material-ui/icons/Info';
+import TimeIcon from '@material-ui/icons/AccessTime';
 
 import uniq from 'lodash/uniq'
 import without from 'lodash/without'
+import pick from 'lodash/pick'
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,13 +20,26 @@ import { trailFields } from '../constants'
 
 import { withStyles } from '@material-ui/core/styles';
 
+import TimePicker from './TimePicker'
 
 const styles = theme => ({
-  chip: {
-    fontSize: '16px !important'
+  inputRoot: {
+    padding: 0,
+    margin: 0,
+    // maxHeight: '1.4em',
+  },
+  chipContainer: {
+    minHeight: 20,
+    '&$labeled': {
+      marginTop: 0
+    }
+  },
+  input: {
+    margin: 0
   },
   root: {
-    position: 'relative'
+    position: 'relative',
+    padding: 0,
   },
   container: {
     display: 'grid',
@@ -30,12 +47,12 @@ const styles = theme => ({
     gridGap: `${theme.spacing.unit * 3}px`,
   },
   paper: {
-    padding: theme.spacing.unit,
-    paddingBottom: 0,
+    padding: theme.spacing.unit / 2,
     textAlign: 'left',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
     marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing.unit,
   },
   divider: {
     margin: `${theme.spacing.unit * 2}px 0`,
@@ -45,6 +62,9 @@ const styles = theme => ({
     top: '100%',
     zIndex: '100',
     width: '100%'
+  },
+  timeSelection: {
+    textAlign: 'right'
   }
 });
 
@@ -106,7 +126,8 @@ class ControlledChipInput extends React.Component {
     return (
       <div className={classes.root}>
         <ChipInput
-          label='Search'
+          classes={{root: classes.inputRoot, input: classes.input, chipContainer: classes.chipContainer}}
+          label="Search all fields using strings like '1234' or column values like 'origin:monolith'"
           fullWidth
           disableUnderline
           value={this.state.chips}
@@ -134,20 +155,24 @@ class ControlledChipInput extends React.Component {
 const Search = ({classes, handleChange}) => (
   <div>
     <Paper className={classes.paper}>
-      <Grid container spacing={24}>
-        <Grid item xs={12} md={12}>
+      <Grid container spacing={24} alignItems="center" justify="center">
+        <Grid item xs={8} md={8}>
           <ControlledChipInput
             handleChange={handleChange}
             classes={classes}
           />
         </Grid>
+        <Grid item xs={4} md={4} className={classes.timeSelection}>
+          <Button variant="outlined" className={classes.button}>
+            <TimeIcon /> Selected Range
+            <TimePicker />
+          </Button>
+        </Grid>
       </Grid>
     </Paper>
-    <Typography variant="caption">
-      <InfoIcon />
-      Search all fields using strings like '1234' or column values like 'origin:monolith'
-    </Typography>
   </div>
 )
+
+
 
 export default withStyles(styles)(Search)

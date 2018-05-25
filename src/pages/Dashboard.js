@@ -52,9 +52,10 @@ const Dashboard = graphql(query)(inject("store")(observer((
   console.log(JSON.stringify(query, null, 2))
   return (
   <div className="App">
-    <AppBar />
-    <div style={dashStyle}>
+    <AppBar>
       <Search handleChange={(args) => store.setQuery(args)}/>
+    </AppBar>
+    <div style={dashStyle}>
       <ChartGrid data={metricsData} />
       <Trails data={trails} />
     </div>
