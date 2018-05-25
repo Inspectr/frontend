@@ -26,10 +26,11 @@ const theme = {
 const TrailDetail = ({ data }) => {
 	return (
 		<div>
-			<JSONTree data={{'Trail': { id: data.id, created_at: data.created_at }}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
-      <JSONTree data={{'Actor': data.actor_metadata}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
-      <JSONTree data={{'Event': data.event_metadata}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
-      <JSONTree data={{'Target': data.target_metadata}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
+			<JSONTree data={{'Trail': { id: data.id }}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
+      <JSONTree data={{'Actor': data.actorMetadata}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
+      <JSONTree data={{'Event': data.eventMetadata}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
+      <JSONTree data={{'Target': data.targetMetadata}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
+      <JSONTree data={{'Origin': data.originMetadata}} theme={theme} hideRoot shouldExpandNode={(key) => true} />
     </div>                    
 	);
 }	
