@@ -66,7 +66,7 @@ class Trails extends React.Component {
                     <TableCell>
                       <Icon className={classes.icon}>{this.state.showDetails[trail.id] ? 'remove_circle' : 'add_circle' }</Icon>
                     </TableCell>  
-                    <TableCell><FormattedDate date={trail.timestamp} /></TableCell>
+                    <TableCell><FormattedDate date={trail.created} /></TableCell>
                     <TableCell>{trail.event}</TableCell>
                     <TableCell>{trail.actor}</TableCell>
                     <TableCell>{trail.target}</TableCell>

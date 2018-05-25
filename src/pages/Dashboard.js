@@ -13,16 +13,15 @@ const query = gql`
 {
   allTrails {
     id
-    created_at
-    timestamp
+    created
     event
-    event_metadata
+    eventMetadata
     actor
-    actor_metadata
+    actorMetadata
     target
-    target_metadata
+    targetMetadata
     origin
-    origin_metadata
+    originMetadata
   }
   allMetrics {
     starts_at

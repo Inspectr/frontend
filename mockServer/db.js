@@ -3,30 +3,29 @@ module.exports = {
       {
         id: 12345,
         event: 'delete',
-        event_metadata: {
+        eventMetadata: {
           event_id: '123123123',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
-        created_at: new Date('2017-07-04'),
-        timestamp: new Date('2017-07-03'),
+        created: new Date('2017-07-04'),
         actor: '23094985xzldkwe039',
-        actor_metadata: {
+        actorMetadata: {
           actor_id: '23094985xzldkwe039',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         target: '1823ksd039ps332s',
-        target_metadata: {
+        targetMetadata: {
           target_id: '1823ksd039ps332s',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         origin: 'checkr',
-        origin_metadata: {
+        originMetadata: {
           field1: 'data',
           field2: 'data',
           field3: 'data'
@@ -35,30 +34,29 @@ module.exports = {
       {
         id: 123456,
         event: 'delete',
-        event_metadata: {
+        eventMetadata: {
           event_id: '123123123',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
-        created_at: new Date('2017-07-04'),
-        timestamp: new Date('2017-07-03'),
+        created: new Date('2017-07-04'),
         actor: '23094985xzldkwe039',
-        actor_metadata: {
+        actorMetadata: {
           actor_id: '23094985xzldkwe039',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         target: '1823ksd039ps332s',
-        target_metadata: {
+        targetMetadata: {
           target_id: '1823ksd039ps332s',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         origin: 'checkr',
-        origin_metadata: {
+        originMetadata: {
           field1: 'data',
           field2: 'data',
           field3: 'data'
@@ -67,30 +65,29 @@ module.exports = {
       {
         id: 1234567,
         event: 'delete',
-        event_metadata: {
+        eventMetadata: {
           event_id: '123123123',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
-        created_at: new Date('2017-07-04'),
-        timestamp: new Date('2017-07-03'),
+        created: new Date('2017-07-04'),
         actor: '23094985xzldkwe039',
-        actor_metadata: {
+        actorMetadata: {
           actor_id: '23094985xzldkwe039',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         target: '1823ksd039ps332s',
-        target_metadata: {
+        targetMetadata: {
           target_id: '1823ksd039ps332s',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         origin: 'checkr',
-        origin_metadata: {
+        originMetadata: {
           field1: 'data',
           field2: 'data',
           field3: 'data'
@@ -99,30 +96,29 @@ module.exports = {
       {
         id: 12345678,
         event: 'delete',
-        event_metadata: {
+        eventMetadata: {
           event_id: '123123123',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
-        created_at: new Date('2017-07-04'),
-        timestamp: new Date('2017-07-03'),
+        created: new Date('2017-07-04'),
         actor: '23094985xzldkwe039',
-        actor_metadata: {
+        actorMetadata: {
           actor_id: '23094985xzldkwe039',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         target: '1823ksd039ps332s',
-        target_metadata: {
+        targetMetadata: {
           target_id: '1823ksd039ps332s',
           field1: 'data',
           field2: 'data',
           field3: 'data'
         },
         origin: 'checkr',
-        origin_metadata: {
+        originMetadata: {
           field1: 'data',
           field2: 'data',
           field3: 'data'
